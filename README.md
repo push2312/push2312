@@ -1,4 +1,4 @@
-## Hi there 👋
+## First Website made with Claude 👋
 
 <!--
 **push2312/push2312** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
