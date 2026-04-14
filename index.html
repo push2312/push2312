@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pushkal Purohit — Ph.D. Scholar, IIT Jodhpur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f2eb;
+    --bg-card: #fdfaf3;
+    --ink: #1a1714;
+    --ink-muted: #6b6560;
+    --accent: #1d4e89;
+    --accent-warm: #b85c38;
+    --accent-light: #e8eff8;
+    --rule: #d6cfc2;
+    --tag-bg: #e8eff8;
+    --tag-text: #1d4e89;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(245,242,235,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .nav-brand {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: .01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 0;
+    list-style: none;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: .4rem .85rem;
+    font-size: .82rem;
+    font-weight: 500;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: color .2s, background .2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--accent);
+    background: var(--accent-light);
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: all .3s;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: .78rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    margin-bottom: .75rem;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1.5px;
+    background: var(--accent-warm);
+    flex-shrink: 0;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    line-height: 1.1;
+    letter-spacing: -.01em;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-role {
+    font-size: .9rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 1.4rem;
+    letter-spacing: .02em;
+  }
+
+  .hero p {
+    color: var(--ink-muted);
+    font-size: .97rem;
+    max-width: 54ch;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .55rem 1.2rem;
+    border-radius: 4px;
+    font-size: .84rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: .02em;
+    transition: all .2s;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: 1.5px solid var(--accent);
+  }
+  .btn-primary:hover { background: #163d70; border-color: #163d70; }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+  }
+  .btn-outline:hover { background: var(--accent-light); }
+
+  .avatar-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #c9d9ee 0%, #d4e6f8 60%, #b8ccdf 100%);
+    border: 2px solid var(--rule);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 4rem;
+    color: var(--accent);
+    letter-spacing: .02em;
+    flex-shrink: 0;
+  }
+
+  .contact-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    font-size: .8rem;
+    color: var(--ink-muted);
+    width: 100%;
+  }
+  .contact-card p { margin-bottom: .35rem; }
+  .contact-card a { color: var(--accent); text-decoration: none; }
+  .contact-card a:hover { text-decoration: underline; }
+
+  /* ── SECTION COMMON ── */
+  .section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: .6rem;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--ink);
+    margin-bottom: 1.8rem;
+    line-height: 1.2;
+  }
+
+  /* ── INTERESTS ── */
+  .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .interest-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.2rem 1.4rem;
+    transition: box-shadow .2s;
+  }
+  .interest-card:hover { box-shadow: 0 4px 18px rgba(29,78,137,.08); }
+
+  .interest-icon {
+    font-size: 1.5rem;
+    margin-bottom: .6rem;
+  }
+
+  .interest-card h3 {
+    font-family: var(--sans);
+    font-size: .88rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: .35rem;
+  }
+
+  .interest-card p {
+    font-size: .82rem;
+    color: var(--ink-muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-timeline { display: flex; flex-direction: column; gap: 0; }
+
+  .edu-item {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 0 1.5rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  .edu-item:last-child { border-bottom: none; }
+
+  .edu-year {
+    font-family: var(--mono);
+    font-size: .78rem;
+    color: var(--accent-warm);
+    padding-top: .1rem;
+    font-weight: 500;
+  }
+
+  .edu-body h3 {
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: .15rem;
+  }
+  .edu-body .edu-inst {
+    font-size: .84rem;
+    color: var(--accent);
+    margin-bottom: .2rem;
+  }
+  .edu-body p {
+    font-size: .82rem;
+    color: var(--ink-muted);
+    font-weight: 300;
+  }
+
+  /* ── PUBLICATIONS ── */
+  .pubs-list { display: flex; flex-direction: column; gap: 1rem; }
+
+  .pub-item {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.2rem 1.4rem;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 0 1rem;
+    align-items: start;
+    transition: box-shadow .2s;
+  }
+  .pub-item:hover { box-shadow: 0 4px 18px rgba(29,78,137,.08); }
+
+  .pub-num {
+    font-family: var(--mono);
+    font-size: .78rem;
+    color: var(--accent);
+    padding-top: .2rem;
+    font-weight: 500;
+  }
+
+  .pub-title {
+    font-size: .92rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: .25rem;
+    line-height: 1.4;
+  }
+  .pub-meta {
+    font-size: .8rem;
+    color: var(--ink-muted);
+    font-style: italic;
+    margin-bottom: .4rem;
+  }
+  .pub-links { display: flex; gap: .5rem; flex-wrap: wrap; }
+
+  .tag {
+    display: inline-block;
+    padding: .18rem .6rem;
+    border-radius: 3px;
+    font-size: .72rem;
+    font-weight: 500;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    text-decoration: none;
+    letter-spacing: .02em;
+    transition: background .15s;
+  }
+  .tag:hover { background: #ccddf0; }
+
+  /* ── REVIEW ── */
+  .review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: .6rem;
+    margin-top: .5rem;
+  }
+  .review-item {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    padding: .7rem 1rem;
+    font-size: .82rem;
+    color: var(--ink-muted);
+  }
+  .review-item strong { color: var(--ink); font-weight: 500; }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.2rem 1.4rem;
+    transition: box-shadow .2s;
+  }
+  .project-card:hover { box-shadow: 0 4px 18px rgba(29,78,137,.08); }
+
+  .project-badge {
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    margin-bottom: .5rem;
+  }
+
+  .project-card h3 {
+    font-size: .92rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: .4rem;
+  }
+  .project-card p {
+    font-size: .82rem;
+    color: var(--ink-muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .project-card ul {
+    margin-top: .4rem;
+    padding-left: 1.1rem;
+    font-size: .8rem;
+    color: var(--ink-muted);
+    font-weight: 300;
+  }
+  .project-card ul li { margin-bottom: .2rem; }
+
+  /* ── TEACHING ── */
+  .ta-subjects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: .6rem;
+    margin-bottom: 1.5rem;
+  }
+  .ta-subject {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+    padding: .7rem 1rem;
+    font-size: .84rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .posters-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: .75rem; }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .skill-group h3 {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .6rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+  .skill-tag {
+    display: inline-block;
+    padding: .22rem .65rem;
+    border-radius: 3px;
+    font-size: .78rem;
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    color: var(--ink-muted);
+    font-weight: 400;
+  }
+
+  /* ── ACHIEVEMENTS ── */
+  .achievements-list { display: flex; flex-direction: column; gap: .55rem; margin-top: .5rem; }
+  .achievement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: .8rem;
+    padding: .75rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    font-size: .86rem;
+    color: var(--ink-muted);
+    font-weight: 300;
+  }
+  .ach-star { color: var(--accent-warm); flex-shrink: 0; font-size: .9rem; margin-top: .05rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  footer p { font-size: .8rem; color: var(--ink-muted); }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* ── ANIMATION ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero { animation: fadeUp .7s ease both; }
+  .section { animation: fadeUp .6s ease both; animation-play-state: paused; }
+  .section.visible { animation-play-state: running; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 700px) {
+    .hero { grid-template-columns: 1fr; padding: 3rem 1.25rem 2.5rem; gap: 2rem; }
+    .avatar-block { flex-direction: row; align-items: flex-start; }
+    .avatar { width: 110px; height: 110px; font-size: 2.4rem; }
+    .contact-card { font-size: .76rem; }
+    .section { padding: 2.5rem 1.25rem; }
+    .edu-item { grid-template-columns: 1fr; gap: .25rem; }
+    .edu-year { font-size: .75rem; }
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; flex-direction: column; position: fixed; top: 60px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--rule); padding: 1rem 1.25rem; gap: .25rem; z-index: 99; }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: .55rem .85rem; font-size: .84rem; }
+    .hamburger { display: flex; }
+    footer { flex-direction: column; align-items: flex-start; padding: 2rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="top-nav">
+  <a href="#about" class="nav-brand">Pushkal Purohit</a>
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="#about">About</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#highlights">Highlights</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO / ABOUT -->
+<section class="hero" id="about">
+  <div>
+    <p class="hero-eyebrow">Ph.D. Scholar</p>
+    <h1>Pushkal<br>Purohit</h1>
+    <p class="hero-role">Department of Electrical Engineering · IIT Jodhpur</p>
+    <p>
+      Researcher in resilient control of multi-agent systems, specialising in event-triggered mechanisms, coordination control, and security against adversarial attacks on networked cyber-physical systems.
+    </p>
+
+    <p style="font-size:.9rem;color:var(--ink-muted);font-weight:300;margin-bottom:1.6rem;max-width:54ch;">
+      At the <a href="https://dsclab.iitj.ac.in/" style="color:var(--accent);text-decoration:none;">Distributed Systems and Control Lab (DSCLab)</a>, IIT Jodhpur, I develop resilient consensus algorithms, attack detection and mitigation strategies, and event-triggered control frameworks validated on ground and aerial robots with motion-capture systems.
+    </p>
+
+    <div class="hero-links">
+      <a class="btn btn-primary" href="mailto:purohitprithu@gmail.com">✉ Email Me</a>
+      <a class="btn btn-outline" href="https://www.linkedin.com/in/pushkal-purohit-273478131/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-outline" href="https://scholar.google.com/citations?user=c6LcGywAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+      <a class="btn btn-outline" href="https://1drv.ms/b/c/1338466e7a772fd3/IQTGT4xddUolSZe6lxz36xL1Ae7O9gGgP8fj5J17Cdc4gm8?e=6F3FKt" target="_blank" rel="noopener">CV / Resume</a>
+    </div>
+  </div>
+  <div class="avatar-block">
+    <div class="avatar">PP</div>
+    <div class="contact-card">
+      <p>📧 <a href="mailto:purohitprithu@gmail.com">purohitprithu@gmail.com</a></p>
+      <p>📍 IIT Jodhpur, Rajasthan, India</p>
+      <p>📞 Available on Request</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH INTERESTS -->
+<section class="section" id="interests">
+  <p class="section-label">Focus Areas</p>
+  <h2 class="section-title">Research Interests</h2>
+  <div class="interests-grid">
+    <div class="interest-card">
+      <div class="interest-icon">⚡</div>
+      <h3>Event-Triggered Control</h3>
+      <p>Coordination and control of multi-agent systems under spatio-temporal and geometric constraints, reducing communication and computation overhead.</p>
+    </div>
+    <div class="interest-card">
+      <div class="interest-icon">🛡</div>
+      <h3>Resilient Distributed Control</h3>
+      <p>Safe, secure, and resilient distributed control strategies for robotic networks under adversarial conditions and limited information.</p>
+    </div>
+    <div class="interest-card">
+      <div class="interest-icon">🤖</div>
+      <h3>Experimental Validation</h3>
+      <p>Real-world validation of event-driven and security-aware control frameworks using ground and aerial robots with motion capture and real-time sensing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+  <p class="section-label">Academic Background</p>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-timeline">
+    <div class="edu-item">
+      <div class="edu-year">2019–Present</div>
+      <div class="edu-body">
+        <h3>Ph.D. — Electrical Engineering</h3>
+        <div class="edu-inst">Indian Institute of Technology Jodhpur</div>
+        <p>Thesis: <em>Resilient Control Approaches for Networked Cyber-Physical Systems</em>. Supervised by Dr. <a href="https://sites.google.com/view/anoopjain" style="color:var(--accent);text-decoration:none;">Anoop Jain</a> at the <a href="https://sites.google.com/iitj.ac.in/dsclab/home" style="color:var(--accent);text-decoration:none;">Distributed Systems and Control Laboratory</a>.</p>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">2015–2019</div>
+      <div class="edu-body">
+        <h3>B.Tech — Electrical Engineering</h3>
+        <div class="edu-inst">Jodhpur Institute of Engineering & Technology · Rajasthan Technical University, Kota</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">2015</div>
+      <div class="edu-body">
+        <h3>Senior Secondary — PCMCS</h3>
+        <div class="edu-inst">Kendriya Vidyalaya No. 2 AF Stn, Jodhpur · CBSE, Ajmer</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">2013</div>
+      <div class="edu-body">
+        <h3>Secondary Education</h3>
+        <div class="edu-inst">Kendriya Vidyalaya No. 2 AF Stn, Jodhpur · CBSE, Ajmer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="section" id="publications">
+  <p class="section-label">Research Output</p>
+  <h2 class="section-title">Publications</h2>
+  <p style="font-size:.88rem;color:var(--ink-muted);font-weight:300;margin-bottom:1.6rem;max-width:70ch;">
+    Research centering on resilient coordination of networked multi-agent systems under cyber-physical threats, event-triggered control, passivity-based analysis, and adaptive mitigation strategies — grounded in rigorous Lyapunov analysis and validated experimentally.
+  </p>
+
+  <div class="pubs-list">
+
+    <div class="pub-item">
+      <div class="pub-num">1</div>
+      <div>
+        <div class="pub-title">Attitude-Estimated Constraint Circular Motion Control for Underactuated Unicycle Robots</div>
+        <div class="pub-meta">Pushkal Purohit & A. Jain · IEEE Robotics and Automation Letters, vol. 11, no. 5, pp. 6058–6065, May 2026</div>
+        <div class="pub-links">
+          <a class="tag" href="https://doi.org/10.1109/LRA.2026.3677722" target="_blank">DOI</a>
+          <span class="tag" style="background:#fdf3ee;color:var(--accent-warm);">Journal</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-num">2</div>
+      <div>
+        <div class="pub-title">Passivity-based Attack Identification and Mitigation via Event-triggered Observer Feedback</div>
+        <div class="pub-meta">Pushkal Purohit & A. Jain · Systems &amp; Control Letters, vol. 208 (106341), pp. 1–8, 2026</div>
+        <div class="pub-links">
+          <a class="tag" href="https://doi.org/10.1016/j.sysconle.2025.106341" target="_blank">DOI</a>
+          <a class="tag" href="https://arxiv.org/abs/2403.15697" target="_blank">arXiv</a>
+          <span class="tag" style="background:#fdf3ee;color:var(--accent-warm);">Journal</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-num">3</div>
+      <div>
+        <div class="pub-title">On Event-Triggered Resilient Consensus Using Auxiliary Layer</div>
+        <div class="pub-meta">Purohit, P. &amp; Jain, A. · arXiv preprint arXiv:2502.07470, 2025</div>
+        <div class="pub-links">
+          <a class="tag" href="https://arxiv.org/abs/2502.07470" target="_blank">arXiv</a>
+          <span class="tag" style="background:#eef6ee;color:#2d6a4f;">Preprint</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-num">4</div>
+      <div>
+        <div class="pub-title">Lyapunov-Based Attack Detection and Mitigation with Variable Control Gain</div>
+        <div class="pub-meta">Purohit, P. &amp; Jain, A. · 9th Indian Control Conference (ICC), Visakhapatnam, pp. 138–143. IEEE, Dec 2023</div>
+        <div class="pub-links">
+          <a class="tag" href="https://ieeexplore.ieee.org/abstract/document/10442414" target="_blank">IEEE Xplore</a>
+          <span class="tag" style="background:#fdf3ee;color:var(--accent-warm);">Conference</span>
+          <span class="tag" style="background:#fff8e8;color:#b8860b;">🏆 Best Student Paper</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-num">5</div>
+      <div>
+        <div class="pub-title">Passivity-Based Attack Detection and Mitigation with Switching Adaptive Controller and Quadratic Storage Function</div>
+        <div class="pub-meta">Purohit, P. &amp; Jain, A. · 62nd IEEE Conference on Decision and Control (CDC), pp. 2403–2408. IEEE, Dec 2023</div>
+        <div class="pub-links">
+          <a class="tag" href="https://ieeexplore.ieee.org/abstract/document/10383523" target="_blank">IEEE Xplore</a>
+          <span class="tag" style="background:#fdf3ee;color:var(--accent-warm);">Conference</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Review/Refereeing -->
+  <h3 style="font-family:var(--sans);font-size:1rem;font-weight:600;color:var(--ink);margin:2rem 0 .8rem;">Peer Review / Refereeing</h3>
+  <div class="review-grid">
+    <div class="review-item"><strong>IEEE RA-L / ICETAAV (2025)</strong> — System modelling &amp; control</div>
+    <div class="review-item"><strong>Advances in Robotics (2025)</strong> — Planning &amp; control</div>
+    <div class="review-item"><strong>Indian Control Conference (2023, 2025)</strong> — Formation &amp; path planning</div>
+    <div class="review-item"><strong>IFAC ACA (2022, 2025)</strong> — Decision making &amp; consensus</div>
+    <div class="review-item"><strong>IEEE Trans. Automation Science &amp; Engineering</strong> — Consensus, switched topology, passivity</div>
+    <div class="review-item"><strong>IEEE Trans. Systems, Man &amp; Cybernetics</strong> — Planning, intelligent systems, sliding mode</div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <p class="section-label">Work &amp; Development</p>
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-badge">PhD · Embedded Systems</div>
+      <h3>STM32 Microcontroller Output Control</h3>
+      <p>ARM-based output control project; paused mid-development due to hardware access constraints during lockdown.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-badge">Undergraduate</div>
+      <h3>Smart Weighing Machine</h3>
+      <p>Load cell-based digital weighing scale logging item data to CSV for later processing.</p>
+      <ul>
+        <li>Shear Beam Load Cell, ADC, SD card reader, keypad, LCD display</li>
+      </ul>
+      <div class="pub-links" style="margin-top:.75rem;">
+        <a class="tag" href="https://1drv.ms/b/c/1338466e7a772fd3/EdMvd3puRjgggBOqJwAAAAABvUW2yYviyITaSHIwq1WgTg?e=wAWKpK" target="_blank">Report ↗</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-badge">Undergraduate</div>
+      <h3>Cell Phone Detector</h3>
+      <p>Circuit detecting RF signals emitted by active mobile phones; demonstrated at college Open House.</p>
+      <ul>
+        <li>IC NE555, CA3130, BJTs, LED indicators, piezo buzzer</li>
+      </ul>
+    </div>
+    <div class="project-card">
+      <div class="project-badge">Undergraduate</div>
+      <h3>Automated Liquid Dispensing System</h3>
+      <p>Arduino-based object detection and bottle-counting system with event-based logic, simulated on TinkerCAD.</p>
+      <ul>
+        <li>HC-SR04 ultrasonic sensor, LED, LCD, piezo buzzer</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING -->
+<section class="section" id="teaching">
+  <p class="section-label">Academic Service</p>
+  <h2 class="section-title">Teaching</h2>
+  <p style="font-size:.88rem;color:var(--ink-muted);font-weight:300;margin-bottom:1.4rem;max-width:68ch;">
+    Teaching Assistant at IIT Jodhpur, guiding undergraduate students through theoretical concepts and practical applications across core electrical engineering and cyber-physical systems subjects.
+  </p>
+  <div class="ta-subjects">
+    <div class="ta-subject">Control Systems (Theory &amp; Lab)</div>
+    <div class="ta-subject">Basic Electrical (Lab)</div>
+    <div class="ta-subject">Introduction to Cyber Physical Systems (Theory &amp; Lab)</div>
+    <div class="ta-subject">Security of Cyber Physical Systems (Theory)</div>
+    <div class="ta-subject">Mobile Robots (Theory)</div>
+  </div>
+
+  <h3 style="font-family:var(--sans);font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.75rem;">Annual Progress Meeting Posters</h3>
+  <div class="posters-row">
+    <a class="btn btn-outline" href="https://drive.google.com/open?id=1nh6MImqmvkCvl-NFdVcNOw7dE-M5aaQF" target="_blank">APM 2023 ↗</a>
+    <a class="btn btn-outline" href="https://drive.google.com/open?id=1NrTRXtL63B1AP7xPhb10SVFPIsWJNyJ0" target="_blank">APM 2024 ↗</a>
+    <a class="btn btn-outline" href="https://drive.google.com/open?id=1f_yePPe6AWVtGZ1neLQy5R0Pv0pwDJrH" target="_blank">APM 2025 ↗</a>
+  </div>
+</section>
+
+<!-- PROFILE HIGHLIGHTS -->
+<section class="section" id="highlights">
+  <p class="section-label">Profile Highlights</p>
+  <h2 class="section-title">Skills &amp; Achievements</h2>
+
+  <div class="skills-grid" style="margin-bottom:2.5rem;">
+    <div class="skill-group">
+      <h3>Programming</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">MATLAB</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">C</span>
+        <span class="skill-tag">C++</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Hardware Platforms</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Khepera IV</span>
+        <span class="skill-tag">Crazyflie Drone</span>
+        <span class="skill-tag">TurtleBot 4</span>
+        <span class="skill-tag">Quanser</span>
+        <span class="skill-tag">Arduino</span>
+        <span class="skill-tag">ARM 32</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>OS / Frameworks</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Windows</span>
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">ROS2</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Tools &amp; Applications</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">LaTeX</span>
+        <span class="skill-tag">Simulink</span>
+        <span class="skill-tag">Stateflow</span>
+        <span class="skill-tag">Qualisys QTM</span>
+        <span class="skill-tag">GIMP</span>
+        <span class="skill-tag">Draw.io</span>
+        <span class="skill-tag">ArduPilot</span>
+        <span class="skill-tag">DaVinci Resolve</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--sans);font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.75rem;">Achievements &amp; Awards</h3>
+  <div class="achievements-list">
+    <div class="achievement-item"><span class="ach-star">★</span>Best Student Paper Award — 9th Indian Control Conference (ICC), Visakhapatnam, 2023</div>
+    <div class="achievement-item"><span class="ach-star">★</span>Student Travel Support Award — IEEE Conference on Decision and Control (CDC), 2023</div>
+    <div class="achievement-item"><span class="ach-star">★</span>1st Position — Circuitrix event, Resonance (Inter-College), 2017</div>
+    <div class="achievement-item"><span class="ach-star">★</span>3rd Prize — Working Model, Open House (College-Level Technical Event), 2016</div>
+    <div class="achievement-item"><span class="ach-star">★</span>2nd Position — Draw it Out event, Resonance (College-Level), 2016</div>
+    <div class="achievement-item"><span class="ach-star">★</span>National Rank 381 / 15,780 — National Interactive Science Olympiad, EduHeal Foundation, 2011</div>
+    <div class="achievement-item"><span class="ach-star">★</span>Selected in Virtual Campus Drive — Recruitment process of Kairn Energy</div>
+    <div class="achievement-item"><span class="ach-star">★</span>52nd Percentile Rank (India-wide) — Wheebox Employability Skills Test</div>
+  </div>
+
+  <h3 style="font-family:var(--sans);font-size:.95rem;font-weight:600;color:var(--ink);margin:2rem 0 .75rem;">Seminars &amp; Workshops</h3>
+  <div class="achievements-list">
+    <div class="achievement-item">
+      <span class="ach-star">◆</span>
+      <span><a href="https://drive.google.com/open?id=1ysWPIl0YFqg8wVBCApLXAP_UFY6IAWqG" style="color:var(--accent);text-decoration:none;">Poster Presentation</a> — CPS Symposium, Indian Institute of Science, Bengaluru, July 2022</span>
+    </div>
+    <div class="achievement-item">
+      <span class="ach-star">◆</span>
+      Paper Presentation on Energy Forecasting — Institute of Engineers, Jodhpur, Energy Conservation Day Symposia, December 2017
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Pushkal Purohit · <a href="mailto:purohitprithu@gmail.com">purohitprithu@gmail.com</a></p>
+  <p style="font-size:.75rem;">Special thanks to <a href="https://sites.google.com/view/anandsingh2302" target="_blank">Anand Singh</a> for helping organize the original site.</p>
+</footer>
+
+<script>
+  // Hamburger toggle
+  const ham = document.getElementById('hamburger');
+  const menu = document.getElementById('nav-menu');
+  ham.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // Scroll-reveal sections
+  const sections = document.querySelectorAll('.section');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  sections.forEach(s => io.observe(s));
+
+  // Active nav link
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const allSections = document.querySelectorAll('[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    allSections.forEach(s => { if (window.scrollY >= s.offsetTop - 90) current = s.id; });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
